@@ -44,6 +44,13 @@ public class AuthController {
         return ResponseEntity.ok(userDto);
     }
 
+    @GetMapping("/ping")
+    public ResponseEntity<String> ping() {
+        logger.info("Ping endpoint called");
+        return ResponseEntity.ok("Pong 🏓");
+    }
+
+
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<Void> handleBadCredentialsException() {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
